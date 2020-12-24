@@ -19,6 +19,7 @@
 		FF6A760A25916F3B00CCD412 /* RedditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6A760925916F3B00CCD412 /* RedditTableViewCell.swift */; };
 		FF6A76312592B4DF00CCD412 /* DataStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6A760425915A6C00CCD412 /* DataStruct.swift */; };
 		FF6A76352592B4FC00CCD412 /* RedditTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = FF6A760925916F3B00CCD412 /* RedditTableViewCell.swift */; };
+		FFC388BC2595043E00203173 /* RedditReaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFC388BB2595043E00203173 /* RedditReaderViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +55,7 @@
 		FF6A75F22591531600CCD412 /* RedditTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedditTableViewController.swift; sourceTree = "<group>"; };
 		FF6A760425915A6C00CCD412 /* DataStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStruct.swift; sourceTree = "<group>"; };
 		FF6A760925916F3B00CCD412 /* RedditTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedditTableViewCell.swift; sourceTree = "<group>"; };
+		FFC388BB2595043E00203173 /* RedditReaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RedditReaderViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -110,6 +112,7 @@
 				FF6A75C125914CAF00CCD412 /* LaunchScreen.storyboard */,
 				FF6A75C425914CAF00CCD412 /* Info.plist */,
 				FF6A75F22591531600CCD412 /* RedditTableViewController.swift */,
+				FFC388BB2595043E00203173 /* RedditReaderViewModel.swift */,
 				FF6A760425915A6C00CCD412 /* DataStruct.swift */,
 				FF6A760925916F3B00CCD412 /* RedditTableViewCell.swift */,
 			);
@@ -264,6 +267,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FF6A75F32591531600CCD412 /* RedditTableViewController.swift in Sources */,
+				FFC388BC2595043E00203173 /* RedditReaderViewModel.swift in Sources */,
 				FF6A75B725914CAE00CCD412 /* AppDelegate.swift in Sources */,
 				FF6A760525915A6C00CCD412 /* DataStruct.swift in Sources */,
 				FF6A760A25916F3B00CCD412 /* RedditTableViewCell.swift in Sources */,

@@ -9,9 +9,7 @@ import UIKit
 
 class RedditTableViewController: UITableViewController {
 
-    var allData: Entry?
-    var entries = [Children]()
-    var nextBatch: String = ""
+    var viewModel = RedditReaderViewModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,36 +20,20 @@ class RedditTableViewController: UITableViewController {
         tableView.separatorStyle = UITableViewCell.SeparatorStyle.none
         tableView.translatesAutoresizingMaskIntoConstraints = false
         tableView.register(RedditTableViewCell.self, forCellReuseIdentifier: "Cell")
-        fetchBatch()
+        viewModel.fetchBatch()
         tableView.rowHeight = UITableView.automaticDimension
         tableView.estimatedRowHeight = 300
         
         tableView.reloadData()
     }
     
-    private func fetchBatch() {
-        let urlString = "http://www.reddit.com/.json" + (nextBatch.isEmpty ? "" : "?after=" + nextBatch)
-        if let url = URL(string: urlString) {
-            do {
-                let contents = try String(contentsOf: url)
-                let jsonData = contents.data(using: .utf8)!
-                allData = try! JSONDecoder().decode(Entry.self, from: jsonData)
-                entries.append(contentsOf: allData?.data?.children ?? [Children]())
-                nextBatch = allData?.data?.after ?? ""
-            } catch {
-                // contents could not be loaded
-            }
-        } else {
-            // the URL was bad!
-        }
-    }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return entries.count
+        return viewModel.entryCount()
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -63,7 +45,7 @@ class RedditTableViewController: UITableViewController {
     }
     
     private func cellHeight(index: Int) -> CGFloat {
-        let child = entries[index].data
+        let child = viewModel.entries[index].data
         let cell:RedditTableViewCell? = tableView.dequeueReusableCell( withIdentifier: "Cell" )
             as? RedditTableViewCell
         if let cell = cell {
@@ -80,7 +62,7 @@ class RedditTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let child = entries[indexPath.row].data
+        let child = viewModel.entries[indexPath.row].data
         let cell:RedditTableViewCell? = tableView.dequeueReusableCell( withIdentifier: "Cell" )
             as? RedditTableViewCell
         
@@ -107,7 +89,7 @@ class RedditTableViewController: UITableViewController {
     
     override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if (scrollView.contentOffset.y >= (scrollView.contentSize.height - scrollView.frame.size.height)) {
-            fetchBatch()
+            viewModel.fetchBatch()
             tableView.reloadData()
         }
     }
